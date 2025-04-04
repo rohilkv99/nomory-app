@@ -1,17 +1,27 @@
 {
   "expo": {
-    "name": "nomory-temp",
-    "slug": "nomory-temp",
+    "name": "Nomory",
+    "slug": "nomory",
+    "scheme": "nomory",
     "version": "1.0.0",
+    "description": "Your food. Your memory. No waste.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "CAMERA",
+        "NOTIFICATIONS"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
