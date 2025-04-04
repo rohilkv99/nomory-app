@@ -5,9 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+- Authentication
+- Search Bar Functionality
+- Integrating Data Sets to the scanned barcodes
+- Suggesting shelf life period for items without expiry dates
+- OCR to recognise items with camera
 
 ## [0.0.3] - 2025-04-04
-### Fixed
+### Added
 - Added notifications with custom date and time
 - Added Product name and Store name
 
