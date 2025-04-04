@@ -4,6 +4,8 @@
 
 Nomory is a React Native app that helps users track expiry dates of their food items by scanning barcodes, saving products, and sending push notifications to reduce food waste.
 
+## In Development
+
 ---
 
 ## 🚀 Features

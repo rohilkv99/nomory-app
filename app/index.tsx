@@ -18,7 +18,8 @@ export default function Index() {
         {
           text: 'OK',
           onPress: () => {
-            router.replace('/'); // resets stack so expiry tab disappears
+            // Just reset the param without triggering navigation
+            router.setParams({ saved: undefined });
           },
         },
       ]);

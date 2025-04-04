@@ -15,7 +15,11 @@
     },
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "This identifier will be used to send you notifications.",
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
       "permissions": [
@@ -34,6 +38,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-notifications",
       [
         "expo-splash-screen",
         {

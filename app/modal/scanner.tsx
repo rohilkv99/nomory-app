@@ -28,8 +28,9 @@ export default function Scanner() {
   
     // Delay navigation slightly to let the camera stop smoothly
     setTimeout(() => {
-      router.push(`/modal/expiry?barcode=${data}`);
-    }, 300);
+      router.replace(`/modal/expiry?barcode=${data}`);
+      setScanned(false); // reset after navigating
+    }, 500);
   };  
 
   if (!permission) return <Text>Requesting camera permission...</Text>;
