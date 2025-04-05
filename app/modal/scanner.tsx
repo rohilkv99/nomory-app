@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, SafeAreaView, Pressable, Linking, Platform, ActivityIndicator } from 'react-native';
 import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera';
 import { useRouter } from 'expo-router';
 
@@ -33,8 +33,34 @@ export default function Scanner() {
     }, 500);
   };  
 
-  if (!permission) return <Text>Requesting camera permission...</Text>;
-  if (!permission.granted) return <Text>No access to camera</Text>;
+  if (!permission) {
+    return (
+      <SafeAreaView style={styles.messageContainer}>
+        <ActivityIndicator size="large" color="#fff" />
+        <Text style={styles.messageText}>Requesting camera permission...</Text>
+      </SafeAreaView>
+    );
+  }
+  
+  if (!permission.granted) {
+    return (
+      <SafeAreaView style={styles.messageContainer}>
+        <Text style={styles.messageText}>Camera permission is required to scan barcodes.</Text>
+        <Pressable
+          onPress={() => {
+            if (Platform.OS === 'ios') {
+              Linking.openURL('app-settings:');
+            } else {
+              Linking.openSettings();
+            }
+          }}
+          style={styles.settingsButton}
+        >
+          <Text style={styles.settingsButtonText}>Open Settings</Text>
+        </Pressable>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -55,4 +81,28 @@ export default function Scanner() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   camera: { flex: 1 },
+  messageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#000', // Optional: matches camera background
+  },
+  messageText: {
+    fontSize: 18,
+    color: '#fff',
+    textAlign: 'center',
+  },
+  settingsButton: {
+    marginTop: 16,
+    backgroundColor: '#007AFF',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  settingsButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 });
